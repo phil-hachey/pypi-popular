@@ -1,0 +1,7 @@
+venv/
+build/
+dist/
+pypi_popular.egg-info/
+.terraform/*
+
+*.pyc

@@ -1,0 +1,10 @@
+lxml
+click
+requests
+dynamodb-mapper
+semver
+semantic_version
+firebase-admin
+flask
+pynamodb
+webargs
