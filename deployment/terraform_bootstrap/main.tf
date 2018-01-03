@@ -4,4 +4,7 @@ provider "aws" {
 
 resource "aws_s3_bucket" "kube_cluster_store" {
   bucket = "pypi-popular-k8s-state-store"
+  versioning = {
+    enabled = true
+  }
 }

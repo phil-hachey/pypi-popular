@@ -122,7 +122,7 @@
         "s3:ListBucket"
       ],
       "Resource": [
-        "arn:aws:s3:::pypi-popular-kube-state-store"
+        "arn:aws:s3:::pypi-popular-k8s-state-store"
       ]
     },
     {
@@ -131,7 +131,7 @@
       "Action": [
         "s3:Get*"
       ],
-      "Resource": "arn:aws:s3:::pypi-popular-kube-state-store/pypi-popular.k8s.local/*"
+      "Resource": "arn:aws:s3:::pypi-popular-k8s-state-store/pypi-popular.k8s.local/*"
     },
     {
       "Sid": "kopsK8sECR",
