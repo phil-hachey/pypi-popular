@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "api.fullname" . }}-api-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+
+  #   ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: api.pypi-popular.com
+      http:
+        paths:
+          - backend:
+              serviceName: {{ template "api.fullname" . }}-api-service
+              servicePort: 80

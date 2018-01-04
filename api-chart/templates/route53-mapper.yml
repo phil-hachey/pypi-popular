@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: route53-mapper
+  name: {{ template "api.fullname" . }}-route53-mapper
   namespace: kube-system
   labels:
     app: route53-mapper

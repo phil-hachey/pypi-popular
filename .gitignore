@@ -4,4 +4,7 @@ dist/
 pypi_popular.egg-info/
 .terraform/*
 
+api-chart/charts/*
+
 *.pyc
+*.lock

@@ -194,6 +194,12 @@ resource "aws_iam_role_policy" "additional-masters-pypi-popular-k8s-local" {
   policy = "${file("${path.module}/data/aws_iam_role_policy_additional.masters.pypi-popular.k8s.local_policy")}"
 }
 
+resource "aws_iam_role_policy" "additional-nodes-pypi-popular-k8s-local" {
+  name   = "additional.nodes.pypi-popular.k8s.local"
+  role   = "${aws_iam_role.nodes-pypi-popular-k8s-local.name}"
+  policy = "${file("${path.module}/data/aws_iam_role_policy_additional.nodes.pypi-popular.k8s.local_policy")}"
+}
+
 resource "aws_iam_role_policy" "masters-pypi-popular-k8s-local" {
   name   = "masters.pypi-popular.k8s.local"
   role   = "${aws_iam_role.masters-pypi-popular-k8s-local.name}"

@@ -1,18 +1,18 @@
 apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
-  name: api
+  name: {{ template "api.fullname" . }}-api-deployment
   labels:
-    app: api
+    app: {{ template "api.fullname" . }}-api-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: api
+      app: {{ template "api.fullname" . }}-api-deployment
   template:
     metadata:
       labels:
-        app: api
+        app: {{ template "api.fullname" . }}-api-deployment
     spec:
       containers:
         - name: api
