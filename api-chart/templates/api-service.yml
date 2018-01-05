@@ -13,6 +13,7 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
 spec:
   # type: LoadBalancer
+  type: NodePort
   ports:
     - name: http
       port: 80

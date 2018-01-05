@@ -2,22 +2,15 @@
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "",
       "Effect": "Allow",
-      "Action": "route53:ListHostedZonesByName",
-      "Resource": "*"
-    },
-    {
-      "Sid": "",
-      "Effect": "Allow",
-      "Action": "elasticloadbalancing:DescribeLoadBalancers",
-      "Resource": "*"
-    },
-    {
-      "Sid": "",
-      "Effect": "Allow",
-      "Action": "route53:ChangeResourceRecordSets",
-      "Resource": "*"
+      "Action": [
+        "route53:*",
+        "elasticloadbalancing:*",
+        "ec2:*"
+      ],
+      "Resource": [
+        "*"
+      ]
     }
   ]
 }

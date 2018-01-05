@@ -459,8 +459,21 @@ resource "aws_subnet" "us-east-1a-pypi-popular-k8s-local" {
   tags = {
     KubernetesCluster                              = "pypi-popular.k8s.local"
     Name                                           = "us-east-1a.pypi-popular.k8s.local"
-    "kubernetes.io/cluster/pypi-popular.k8s.local" = "owned"
-    "kubernetes.io/role/elb"                       = "1"
+    "kubernetes.io/cluster/pypi-popular.k8s.local" = "shared"
+    "kubernetes.io/role/alb-ingress" = ""
+  }
+}
+
+resource "aws_subnet" "us-east-1b-pypi-popular-k8s-local" {
+  vpc_id            = "${aws_vpc.pypi-popular-k8s-local.id}"
+  cidr_block        = "172.20.31.0/19"
+  availability_zone = "us-east-1b"
+
+  tags = {
+    KubernetesCluster                              = "pypi-popular.k8s.local"
+    Name                                           = "us-east-1b.pypi-popular.k8s.local"
+    "kubernetes.io/cluster/pypi-popular.k8s.local" = "shared"
+    "kubernetes.io/role/alb-ingress" = ""
   }
 }
 
