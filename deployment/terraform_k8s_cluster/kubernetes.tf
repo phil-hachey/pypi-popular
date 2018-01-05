@@ -466,7 +466,7 @@ resource "aws_subnet" "us-east-1a-pypi-popular-k8s-local" {
 
 resource "aws_subnet" "us-east-1b-pypi-popular-k8s-local" {
   vpc_id            = "${aws_vpc.pypi-popular-k8s-local.id}"
-  cidr_block        = "172.20.31.0/19"
+  cidr_block        = "172.20.0.0/19"
   availability_zone = "us-east-1b"
 
   tags = {

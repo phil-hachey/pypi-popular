@@ -3,8 +3,7 @@ kind: Ingress
 metadata:
   name: {{ template "api.fullname" . }}-api-ingress
   annotations:
-    alb.ingress.kubernetes.io/certificate-arn: |-
-      arn:aws:acm:us-east-1:431632167367:certificate/321705eb-7c35-4fb8-92ab-dd097dcdf487
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:431632167367:certificate/321705eb-7c35-4fb8-92ab-dd097dcdf487
     alb.ingress.kubernetes.io/subnets: subnet-18346553, subnet-d120a98c
     alb.ingress.kubernetes.io/scheme: internet-facing
 spec:

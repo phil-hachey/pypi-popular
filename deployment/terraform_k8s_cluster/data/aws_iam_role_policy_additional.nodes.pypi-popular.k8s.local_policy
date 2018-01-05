@@ -6,7 +6,8 @@
       "Action": [
         "route53:*",
         "elasticloadbalancing:*",
-        "ec2:*"
+        "ec2:*",
+        "acm:*"
       ],
       "Resource": [
         "*"
