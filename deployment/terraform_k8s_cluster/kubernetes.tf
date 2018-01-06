@@ -252,7 +252,7 @@ resource "aws_launch_configuration" "master-us-east-1a-masters-pypi-popular-k8s-
 resource "aws_launch_configuration" "nodes-pypi-popular-k8s-local" {
   name_prefix                 = "nodes.pypi-popular.k8s.local-"
   image_id                    = "ami-d88812a2"
-  instance_type               = "t2.medium"
+  instance_type               = "t2.small"
   key_name                    = "${aws_key_pair.kubernetes-pypi-popular-k8s-local-f13bff43a050ff6442a050dee1addfc3.id}"
   iam_instance_profile        = "${aws_iam_instance_profile.nodes-pypi-popular-k8s-local.id}"
   security_groups             = ["${aws_security_group.nodes-pypi-popular-k8s-local.id}"]

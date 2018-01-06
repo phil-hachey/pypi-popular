@@ -44,7 +44,9 @@ kops.update.cluster:
 		--target terraform \
 		--name $(CLUSTER_NAME)
 
-deploy:
-	@serverless --stage $(stage) deploy
+helm.upgrade:
+	@helm upgrade \
+		$(HELM_RELEASE) \
+		deployment/helm
 
 .PHONY: all
