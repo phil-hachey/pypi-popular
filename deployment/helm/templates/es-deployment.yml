@@ -1,25 +1,25 @@
-# apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
-# kind: Deployment
-# metadata:
-#   name: es
-#   labels:
-#     app: es
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       app: es
-#   template:
-#     metadata:
-#       labels:
-#         app: es
-#     spec:
-#       containers:
-#         - name: es
-#           image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
-#           env:
-#             - name: discovery.type
-#               value: single-node
-#           ports:
-#             - containerPort: 9200
-#             - containerPort: 9300
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ template "api.fullname" . }}-es-deployment
+  labels:
+    app: {{ template "api.fullname" . }}-es-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ template "api.fullname" . }}-es-deployment
+  template:
+    metadata:
+      labels:
+        app: {{ template "api.fullname" . }}-es-deployment
+    spec:
+      containers:
+        - name: es
+          image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
+          env:
+            - name: discovery.type
+              value: single-node
+          ports:
+            - containerPort: 9200
+            - containerPort: 9300

@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ template "api.fullname" . }}-api-service
   labels:
-    app: api-service
+    app: {{ template "api.fullname" . }}-api-service
     # dns: route53
   annotations:
     # domainName: "api.pypi-popular.com"
