@@ -44,18 +44,6 @@ kops.update.cluster:
 		--target terraform \
 		--name $(CLUSTER_NAME)
 
-kube.apply.all:
-	kubectl apply -f deployment/kubernetes/api-deployment.yml
-	kubectl apply -f deployment/kubernetes/api-service.yml
-	kubectl apply -f deployment/kubernetes/es-deployment.yml
-	kubectl apply -f deployment/kubernetes/route53-mapper.yml
-
-kube.delete.all:
-	kubectl delete -f deployment/kubernetes/api-deployment.yml
-	kubectl delete -f deployment/kubernetes/api-service.yml
-	kubectl delete -f deployment/kubernetes/es-deployment.yml
-	kubectl delete -f deployment/kubernetes/route53-mapper.yml
-
 deploy:
 	@serverless --stage $(stage) deploy
 

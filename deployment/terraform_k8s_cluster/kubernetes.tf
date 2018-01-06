@@ -82,8 +82,8 @@ resource "aws_autoscaling_group" "master-us-east-1a-masters-pypi-popular-k8s-loc
 resource "aws_autoscaling_group" "nodes-pypi-popular-k8s-local" {
   name                 = "nodes.pypi-popular.k8s.local"
   launch_configuration = "${aws_launch_configuration.nodes-pypi-popular-k8s-local.id}"
-  max_size             = 1
-  min_size             = 1
+  max_size             = 2
+  min_size             = 2
   vpc_zone_identifier  = ["${aws_subnet.us-east-1a-pypi-popular-k8s-local.id}"]
 
   tag = {
@@ -252,7 +252,7 @@ resource "aws_launch_configuration" "master-us-east-1a-masters-pypi-popular-k8s-
 resource "aws_launch_configuration" "nodes-pypi-popular-k8s-local" {
   name_prefix                 = "nodes.pypi-popular.k8s.local-"
   image_id                    = "ami-d88812a2"
-  instance_type               = "t2.small"
+  instance_type               = "t2.medium"
   key_name                    = "${aws_key_pair.kubernetes-pypi-popular-k8s-local-f13bff43a050ff6442a050dee1addfc3.id}"
   iam_instance_profile        = "${aws_iam_instance_profile.nodes-pypi-popular-k8s-local.id}"
   security_groups             = ["${aws_security_group.nodes-pypi-popular-k8s-local.id}"]
@@ -269,7 +269,7 @@ resource "aws_launch_configuration" "nodes-pypi-popular-k8s-local" {
     create_before_destroy = true
   }
 
-  spot_price = "0.011"
+  spot_price = "0.1"
 }
 
 resource "aws_route" "0-0-0-0--0" {
@@ -289,6 +289,11 @@ resource "aws_route_table" "pypi-popular-k8s-local" {
 
 resource "aws_route_table_association" "us-east-1a-pypi-popular-k8s-local" {
   subnet_id      = "${aws_subnet.us-east-1a-pypi-popular-k8s-local.id}"
+  route_table_id = "${aws_route_table.pypi-popular-k8s-local.id}"
+}
+
+resource "aws_route_table_association" "us-east-1b-pypi-popular-k8s-local" {
+  subnet_id      = "${aws_subnet.us-east-1b-pypi-popular-k8s-local.id}"
   route_table_id = "${aws_route_table.pypi-popular-k8s-local.id}"
 }
 
