@@ -3,6 +3,8 @@ from webargs import fields
 from webargs.flaskparser import use_kwargs
 from marshmallow.validate import Length
 
+from pypi_popular.core.services.search import search_packages
+
 import logging
 logger = logging.getLogger(__name__)
 
@@ -22,11 +24,8 @@ def config(setup_state):
         validate=Length(min=3))
 })
 def get_list(name):
-    return flask.jsonify([{
-        'id': 'id1',
-        'name': 'ansible',
-        'total_downloads': 10101,
-    }])
+    packages = search_packages(name)
+    return flask.jsonify(packages)
 
 
 @blueprint.route('/packages/<package_id>')

@@ -2,6 +2,8 @@ import flask
 
 import routes
 
+from pypi_popular.core.settings import settings
+
 app = flask.Flask(__name__)
 
 @app.route('/')
@@ -13,4 +15,6 @@ for name, blueprint in routes.__dict__.items():
         app.register_blueprint(blueprint)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    settings_dct = settings()
+    debug = settings_dct.get('FLASK_DEBUG', False)
+    app.run(host='0.0.0.0', debug=bool(debug))

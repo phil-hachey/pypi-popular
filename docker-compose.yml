@@ -1,9 +1,41 @@
-version: "2"
+version: "3"
 
 services:
   api:
+    depends_on:
+      - es
     build:
       context: .
     image: philippehachey/pypi-popular-api
     ports:
       - 5000:5000
+    networks:
+      - shared
+    env_file: local.env
+    volumes:
+      - .:/var/app
+
+  manage:
+    depends_on:
+      - es
+    build:
+      context: .
+    image: philippehachey/pypi-popular-api
+    networks:
+      - shared
+    env_file: local.env
+    volumes:
+      - .:/var/app
+    entrypoint: python pypi_popular/manage.py
+
+  es:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
+    ports:
+      - 9200:9200
+    environment:
+      discovery.type: single-node
+    networks:
+      - shared
+
+networks:
+  shared:
